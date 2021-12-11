@@ -152,8 +152,8 @@ impl Plugin for RealearnPlugin {
     fn get_info(&self) -> Info {
         firewall(|| {
             Info {
-                name: "ReaLearn".to_string(),
-                vendor: "Helgoboss".to_string(),
+                name: "XLearn".to_string(),
+                vendor: "luna624".to_string(),
                 // In C++ this is the same like 'hbrl'
                 unique_id: 1751282284,
                 preset_chunks: true,

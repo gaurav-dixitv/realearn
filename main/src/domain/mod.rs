@@ -56,6 +56,7 @@ mod eventing;
 pub use eventing::*;
 
 pub mod ui_util;
+pub mod unresolved_target_util;
 
 mod realearn_target_context;
 pub use realearn_target_context::*;
