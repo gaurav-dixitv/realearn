@@ -36,7 +36,7 @@ use std::fmt;
 use wildmatch::WildMatch;
 
 use crate::domain::unresolved_target_util::{
-    get_level_indices,
+    get_level_indices, get_track_at_index_with_fx
 };
 /// Maximum number of "allow multiple" resolves (e.g. affected <Selected> tracks).
 const MAX_MULTIPLE: usize = 1000;
@@ -860,7 +860,18 @@ impl VirtualTrack {
                         None
                     }
                 }
-                _ => None,
+                _ => {
+                    if let [i] = args {
+                        let i = i.round() as u32;
+                        let project = context.context().project_or_current_project();
+                        get_track_at_index_with_fx(&project, name, i)
+                        //let fx_len = name.chars().count() as u32;
+                        //Some((fx_len + i) as f64)
+                    }else{
+                        None
+                    }           
+                }
+                //_ => None,
             })
             .map_err(|_| TrackResolveError::ExpressionFailed)?
             .round() as i32;
